@@ -1,0 +1,28 @@
+name: Preprocessing Data
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Run preprocessing script
+        run: |
+          cd preprocessing
+          python automate_Nama-Siswa.py
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: preprocessing-data
+          path: preprocessing/breast_cancer_preprocessing.csv
