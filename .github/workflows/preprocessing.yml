@@ -20,7 +20,7 @@ jobs:
       - name: Run preprocessing script
         run: |
           cd preprocessing
-          python automate_Nama-Siswa.py
+          python automate_Felda-Ega.py
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
